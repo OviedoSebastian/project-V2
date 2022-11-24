@@ -12,7 +12,7 @@ public class Tablero extends Canvas implements KeyListener {
 
     Laberinto laberinto = new Laberinto();
     int [][] lab = laberinto.obtenerLaberinto();
-    public HashMap<String, Jugador> jugadores = new HashMap<>();
+    public HashMap<String, Jugador> jugadores = new HashMap<>(2);
     public String jugadorPresente = "";
     public Despachador despachador;
     private final int ancho = 30;

@@ -2,13 +2,13 @@ package net;
 import gui.Tablero;
 import gui.VentanaPrincipal;
 
+import javax.swing.*;
 import java.net.*;
-import java.io.*;
 
 public class Cliente {
     public void conectar(VentanaPrincipal gui, Tablero tablero) {
         String hostName = "localhost";
-        int portNumber = 1234;//Integer.parseInt(args[1]);
+        int portNumber = 1234;
 
         try {
             Socket kkSocket = new Socket(hostName, portNumber);
@@ -21,8 +21,9 @@ public class Cliente {
             escritor.gui = gui;
             gui.lienzo.despachador = gui.despachador = escritor;
             escritor.start();
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        }catch (Exception e) {
+            System.out.println("Error: " + e.getMessage() );
+            System.exit(0);
         }
     }
 }

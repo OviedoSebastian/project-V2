@@ -19,7 +19,7 @@ public class Despachador extends Thread {
     private Socket socket;
     public VentanaPrincipal gui = null;
     public ArrayList<Despachador> jugadoresenlinea = new ArrayList<>();
-    public HashMap<String, Jugador> jugadores = new HashMap<>();
+    public HashMap<String, Jugador> jugadores = new HashMap<>(2);
 
     private int Xnicial=0, Yinicial=0;
 
@@ -45,14 +45,13 @@ public class Despachador extends Thread {
     private void leer() throws IOException  {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            System.out.println("Recibido: " + inputLine);
-
 
             if (gui != null) {  // Cliente
                 String[] datosJugadores = inputLine.split("#");
                 for (String jugador: datosJugadores) {
                     String[] data = jugador.split(",");
                     gui.lienzo.jugadores.put(data[0] , new Jugador(data[0], seleccionarcolor(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+                    System.out.println(datosJugadores[0]);
 
                 }
                 gui.lienzo.repaint();
@@ -84,7 +83,6 @@ public class Despachador extends Thread {
     public void send(String inputLine)
     {
         try {
-            System.out.println("Enviando: " + inputLine);
             out.println(inputLine);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

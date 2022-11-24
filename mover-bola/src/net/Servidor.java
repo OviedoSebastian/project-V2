@@ -1,5 +1,5 @@
 package net;
-
+import javax.swing.*;
 import java.net.*;
 import java.util.ArrayList;
 
@@ -23,8 +23,13 @@ public class Servidor {
                     Despachador escritor = new Despachador(clientSocket, "escritor");//servidor
                     jugadoresenlinea.add(escritor);
                     escritor.start();
+                    if(numeroJugadores==2){
+                        serverSocket.close();
+                        System.out.println("NUMERO MAXIMO DE JUGADORES ALCANZADO");
+                    }
                 }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 

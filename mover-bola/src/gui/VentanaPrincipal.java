@@ -4,8 +4,8 @@ import net.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaPrincipal extends JFrame
-{
+public class VentanaPrincipal extends JFrame{
+
     Container panel;
     public Tablero lienzo;
     public Despachador despachador;
@@ -23,7 +23,6 @@ public class VentanaPrincipal extends JFrame
 
         Cliente conexion = new Cliente();
         conexion.conectar(this, lienzo); // se conecta al servidor
-
         conectar();  // conecta el usuario con el juego en linea
     }
 

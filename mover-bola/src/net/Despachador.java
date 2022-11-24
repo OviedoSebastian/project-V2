@@ -36,13 +36,13 @@ public class Despachador extends Thread {
 
     public void run(){
         try {
-            leer();
+            iniciarJuego();
         }catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
-    private void leer() throws IOException  {
+    private void iniciarJuego() throws IOException  {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
 
